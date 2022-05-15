@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 id="header-title">Quick Notes</h1>
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <input id="filter" class="form-control" placeholder="search for notes" type="text">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container bg-light">
+            <div id="main" class="card card-body bg-light">
+                <h2 class="title">Writedown QuicksNotes</h2>
+                <form id="addForm" class="form-inline mb-3">
+                    <input class="col-md-6" type="text" name="" placeholder="write down your notes.." id="notes">
+                    <input class="btn btn-dark" type="submit" value="submit">
+                </form>
+                <h2 class="title">Notes:</h2>
+                <ul id="notesList" class="list-group list-group-light">
+                    <li class="list-group-item">Cras justo odio <button
+                            class="btn btn-danger btn-sm float-end delete">X</button><button
+                            class="btn btn-success btn-sm float-end complete">&#10003</button></li>
+                    <li class="list-group-item">Cras justo odio <button
+                            class="btn btn-danger btn-sm float-end delete">X</button><button
+                            class="btn btn-success btn-sm float-end complete">&#10003</button></li>
+                    <li class="list-group-item">Cras justo odio <button
+                            class="btn btn-danger btn-sm float-end delete">X</button><button
+                            class="btn btn-success btn-sm float-end complete">&#10003</button></li>
+                    <li class="list-group-item">Cras justo odio <button
+                            class="btn btn-danger btn-sm float-end delete">X</button><button
+                            class="btn btn-success btn-sm float-end complete">&#10003</button></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
