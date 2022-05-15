@@ -9,15 +9,15 @@ form.addEventListener('submit', addNotes)
 
 function addNotes(e) {
     e.preventDefault()
-    let newNote = document.querySelector('#notes').value
 
-    //make a new list 
+    let notes = document.getElementById('notes').value
+
     let li = document.createElement('li')
+
+    li.appendChild(document.createTextNode(notes))
+
     li.className = 'list-group-item'
 
-    li.appendChild(document.createTextNode(newNote))
-
-    //adding a new delete button and completed button to each li item 
     let deleteBtn = document.createElement('button')
     let completedBtn = document.createElement('button')
 
@@ -30,12 +30,12 @@ function addNotes(e) {
     li.appendChild(deleteBtn)
     li.appendChild(completedBtn)
 
-
-    //append the li to our list 
     notesList.appendChild(li)
 
 
+
 }
+
 
 
 
