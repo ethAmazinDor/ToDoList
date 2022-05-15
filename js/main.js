@@ -5,6 +5,19 @@ let notesList = document.getElementById('notesList')
 //events for functionality 
 form.addEventListener('submit', addNotes)
 
+notesList.addEventListener('click', delNote)
+
+
+function delNote(e) {
+    if (e.target.classList.contains('delete')) {
+        let li = e.target.parentElement
+        notesList.removeChild(li)
+    }
+
+
+}
+
+
 
 
 function addNotes(e) {
@@ -25,7 +38,7 @@ function addNotes(e) {
     completedBtn.className = 'btn btn-success btn-sm float-end complete'
 
     deleteBtn.appendChild(document.createTextNode('X'))
-    completedBtn.appendChild(document.createTextNode('&#10003'))
+    completedBtn.appendChild(document.createTextNode('Done'))
 
     li.appendChild(deleteBtn)
     li.appendChild(completedBtn)
