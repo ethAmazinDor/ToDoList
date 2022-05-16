@@ -42,37 +42,47 @@ function filterWords(e) {
 function addNotes(e) {
     e.preventDefault()
 
-    let notes = document.getElementById('notes').value
+    if (notes.value === '') {
+        // alert('you forgot to write your note!')
+        notes.classList.remove('shake');
+        setTimeout(() => {
+            notes.classList.add('shake')
+        }, 50)
+    } else {
 
-    let li = document.createElement('li')
+        let notes = document.getElementById('notes').value
 
-    li.appendChild(document.createTextNode(notes))
+        let li = document.createElement('li')
 
-    li.className = 'list-group-item '
+        li.appendChild(document.createTextNode(notes))
 
-    let deleteBtn = document.createElement('button')
-    let completedBtn = document.createElement('button')
+        li.className = 'list-group-item '
 
-    deleteBtn.className = 'btn btn-danger btn-sm float-end delete me-2'
-    completedBtn.className = 'btn btn-success btn-sm float-end complete me-2'
+        let deleteBtn = document.createElement('button')
+        let completedBtn = document.createElement('button')
 
-    deleteBtn.appendChild(document.createTextNode('X'))
-    completedBtn.appendChild(document.createTextNode('Done'))
+        deleteBtn.className = 'btn btn-danger btn-sm float-end delete me-2'
+        completedBtn.className = 'btn btn-success btn-sm float-end complete me-2'
 
-    li.appendChild(deleteBtn)
-    li.appendChild(completedBtn)
+        deleteBtn.appendChild(document.createTextNode('X'))
+        completedBtn.appendChild(document.createTextNode('Done'))
 
-    notesList.appendChild(li)
+        li.appendChild(deleteBtn)
+        li.appendChild(completedBtn)
 
-    //when "Done" button is pressed it toggles the class of crossed 
-    completedBtn.addEventListener('click', (e) => {
-        if (e.target.classList[4] === 'complete') {
-            let li = e.target.parentElement
-            li.classList.toggle('crossed')
-        }
-    })
+        notesList.appendChild(li)
+
+        //when "Done" button is pressed it toggles the class of crossed 
+        completedBtn.addEventListener('click', (e) => {
+            if (e.target.classList[4] === 'complete') {
+                let li = e.target.parentElement
+                li.classList.toggle('crossed')
+            }
+        })
+    }
 
 }
+
 
 
 
