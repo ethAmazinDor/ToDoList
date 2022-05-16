@@ -3,14 +3,20 @@ let notesList = document.getElementById('notesList')
 let crossOff = document.querySelectorAll('.complete')
 let filter = document.getElementById('filter')
 
+
+
+
+
 //events for functionality 
 
 form.addEventListener('submit', addNotes)
 notesList.addEventListener('click', delNote)
 filter.addEventListener('keyup', filterWords)
 
+
 //deletes a note
 function delNote(e) {
+
     if (e.target.classList.contains('delete')) {
         let li = e.target.parentElement
         notesList.removeChild(li)
@@ -42,6 +48,7 @@ function filterWords(e) {
 function addNotes(e) {
     e.preventDefault()
 
+
     if (notes.value === '') {
         // alert('you forgot to write your note!')
         notes.classList.remove('shake');
@@ -49,14 +56,26 @@ function addNotes(e) {
             notes.classList.add('shake')
         }, 50)
     } else {
-
         let notes = document.getElementById('notes').value
+
+
+        let localItems = JSON.parse(localStorage.getItem('localItem'))
+
+        if (localItems === null) {
+            taskList = []
+        } else {
+            taskList = localItems
+        }
+
+        taskList.push(notes)
+        localStorage.setItem('localItem', JSON.stringify(taskList))
+
 
         let li = document.createElement('li')
 
         li.appendChild(document.createTextNode(notes))
 
-        li.className = 'list-group-item '
+        li.className = 'list-group-item text-dark'
 
         let deleteBtn = document.createElement('button')
         let completedBtn = document.createElement('button')
@@ -72,6 +91,8 @@ function addNotes(e) {
 
         notesList.appendChild(li)
 
+
+
         //when "Done" button is pressed it toggles the class of crossed 
         completedBtn.addEventListener('click', (e) => {
             if (e.target.classList[4] === 'complete') {
@@ -80,6 +101,7 @@ function addNotes(e) {
             }
         })
     }
+
 
 }
 
