@@ -13,10 +13,26 @@ border-radius: .25rem;
 transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
+.header-color{
+    background-image: url(/space.jpg);
+}
 .crossed{
     text-decoration: line-through;
 }
 
 #main{
     height: 500px;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+.container{
+    vertical-align: bottom;
+}
+
+.bg-image{
+    background-image: url('/space.jpg');
+    height: 100vh;
 }
