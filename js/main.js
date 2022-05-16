@@ -1,11 +1,25 @@
 let form = document.getElementById('addForm')
 let notesList = document.getElementById('notesList')
-
+let crossOff = document.querySelectorAll('.complete')
 
 //events for functionality 
+
+
+
+
 form.addEventListener('submit', addNotes)
 
 notesList.addEventListener('click', delNote)
+
+
+function crossNote(e) {
+    e.preventDefault()
+    if (e.target.classList[4] === 'complete') {
+        let li = e.target.parentElement
+        li.classList.toggle('crossed')
+    }
+    console.log(e)
+}
 
 
 function delNote(e) {
@@ -13,8 +27,6 @@ function delNote(e) {
         let li = e.target.parentElement
         notesList.removeChild(li)
     }
-
-
 }
 
 
@@ -22,6 +34,10 @@ function delNote(e) {
 
 function addNotes(e) {
     e.preventDefault()
+    for (let i = 0; i < crossOff.length; i++) {
+        crossOff[i].addEventListener('click', crossNote)
+
+    }
 
     let notes = document.getElementById('notes').value
 
@@ -44,9 +60,6 @@ function addNotes(e) {
     li.appendChild(completedBtn)
 
     notesList.appendChild(li)
-
-
-
 }
 
 
