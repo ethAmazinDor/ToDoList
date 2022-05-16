@@ -1,15 +1,15 @@
 let form = document.getElementById('addForm')
 let notesList = document.getElementById('notesList')
 let crossOff = document.querySelectorAll('.complete')
+let filter = document.getElementById('filter')
 
 //events for functionality 
 
 form.addEventListener('submit', addNotes)
-
 notesList.addEventListener('click', delNote)
+filter.addEventListener('keyup', filterWords)
 
-
-
+//deletes a note
 function delNote(e) {
     if (e.target.classList.contains('delete')) {
         let li = e.target.parentElement
@@ -17,6 +17,25 @@ function delNote(e) {
     }
 }
 
+function filterWords(e) {
+    let text = e.target.value.toLowerCase()
+
+    //get all the li items out of the li
+    let allNotes = notesList.getElementsByTagName('li')
+
+    //convert into an array
+
+    Array.from(allNotes).forEach((note) => {
+        let noteName = note.firstChild.textContent
+        if (noteName.toLowerCase().indexOf(text) != -1) {
+            note.style.display = 'block'
+        } else {
+            note.style.display = 'none'
+        }
+
+    })
+    console.log(allNotes)
+}
 
 
 
@@ -25,19 +44,16 @@ function addNotes(e) {
 
     let notes = document.getElementById('notes').value
 
-
-
-
     let li = document.createElement('li')
 
     li.appendChild(document.createTextNode(notes))
 
-    li.className = 'list-group-item'
+    li.className = 'list-group-item '
 
     let deleteBtn = document.createElement('button')
     let completedBtn = document.createElement('button')
 
-    deleteBtn.className = 'btn btn-danger btn-sm float-end delete'
+    deleteBtn.className = 'btn btn-danger btn-sm float-end delete me-2'
     completedBtn.className = 'btn btn-success btn-sm float-end complete me-2'
 
     deleteBtn.appendChild(document.createTextNode('X'))
@@ -48,12 +64,12 @@ function addNotes(e) {
 
     notesList.appendChild(li)
 
+    //when "Done" button is pressed it toggles the class of crossed 
     completedBtn.addEventListener('click', (e) => {
         if (e.target.classList[4] === 'complete') {
             let li = e.target.parentElement
             li.classList.toggle('crossed')
         }
-        console.log(e)
     })
 
 }
